@@ -18,8 +18,9 @@ namespace BibliotecaTech.Controllers
             return View(editoras);
         }
 
-        public IActionResult Create() 
-        { 
+        [HttpGet]
+        public IActionResult Create()
+        {
             return View();
         }
 
@@ -33,6 +34,62 @@ namespace BibliotecaTech.Controllers
                 return RedirectToAction("Index");
             }
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult Update(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            EditoraModel editora = _context.Editoras.FirstOrDefault(x => x.Id == id);
+            if (editora == null)
+            {
+                return NotFound();
+            }
+            return View(editora);
+        }
+
+        [HttpPost]
+        public IActionResult Update(EditoraModel editora)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Editoras.Update(editora);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            EditoraModel editora = _context.Editoras.FirstOrDefault(x => x.Id == id);
+            if (editora == null)
+            {
+                return NotFound();
+            }
+            return View(editora);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(EditoraModel editora)
+        {
+            if (editora == null)
+            {
+                return NotFound();
+
+            }
+            _context.Editoras.Remove(editora);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

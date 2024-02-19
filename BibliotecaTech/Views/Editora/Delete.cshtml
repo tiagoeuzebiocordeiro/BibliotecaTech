@@ -1,0 +1,24 @@
+﻿@model EditoraModel
+@{
+    ViewData["title"] = "Deleção de editora";
+}
+
+<div class="container bg-dark p-5 rounded-5">
+    <div class="mb-5 text-center">
+        <h1 class="text-light">Deleção de editoras</h1>
+    </div>
+    <form method="post" asp-controller="Editora" asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <h2 class="text-warning text-center">Tem certeza que deseja excluir o registro abaixo ?</h2>
+        <div class="mb-3">
+            <label for="Nome" class="form-label text-light">Nome da editora:</label>
+            <input type="text" class="form-control" asp-for="Nome" id="Nome" placeholder="Qual o nome da editora?" disabled>
+            <span asp-validation-for="Nome" class="text-danger"></span>
+        </div>
+
+        <div class="d-flex gap-5 mt-5">
+            <button type="submit" class="btn btn-danger w-50">Excluir</button>
+            <a class="btn btn-primary w-50" asp-controller="Editora" asp-action="Index">Voltar</a>
+        </div>
+    </form>
+</div>
