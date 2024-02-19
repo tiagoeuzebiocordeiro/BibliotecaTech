@@ -3,7 +3,7 @@
     public class LivroModel
     {
         public int Id { get; set; }
-        public int Nome { get; set; }
+        public string Nome { get; set; }
         public DateTime DataPublicacao { get; set; }
         public string Isbn { get; set; }
         public int EditoraId { get; set; }
