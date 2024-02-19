@@ -1,0 +1,29 @@
+﻿@model IEnumerable<EditoraModel> // Aqui eu pego o esqueleto (meu modelo para a view)]
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-5">
+        <h1>Editoras</h1>
+        <a class="btn btn-success mx-2" asp-controller="Editora" asp-action="Create">Cadastrar nova editora</a>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome da Editora</th>
+            </tr>
+        </thead>
+        <tbody>
+        
+            @if(Model != null)
+            {
+                @foreach(var editora in Model)
+                {
+                    <tr>
+                        <td>@editora.Id</td>
+                        <td>@editora.Nome</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

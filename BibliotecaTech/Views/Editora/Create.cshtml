@@ -1,0 +1,21 @@
+﻿@model EditoraModel
+@{
+    ViewData["title"] = "Cadastrar Editora";
+}
+
+<div class="container bg-dark p-5 rounded-5">
+    <div class="mb-5 text-center">
+        <h1 class="text-light">Cadastro de editoras</h1>
+    </div>
+    <form method="post" asp-controller="Editora" asp-action="Create">
+        <div class="mb-3">
+            <label for="Nome" class="form-label text-light">Nome da editora:</label>
+            <input type="text" class="form-control" asp-for="Nome" id="Nome" placeholder="Qual o nome da editora?">   
+        </div>
+      
+        <div class="d-flex gap-5 mt-5">
+            <button type="submit" class="btn btn-success w-50">Cadastrar</button>
+            <a class="btn btn-primary w-50" asp-controller="Editora" asp-action="Index">Voltar</a>
+        </div>
+    </form>
+</div>
