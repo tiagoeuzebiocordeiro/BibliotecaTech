@@ -7,10 +7,25 @@
 <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-5">
         <h1>Editoras</h1>
-        <a class="btn btn-success mx-2" asp-controller="Editora" asp-action="Create">Cadastrar nova editora</a>
+        <a class="btn btn-success mx-2" asp-controller="Editora" asp-action="Create"><i class="bi bi-plus-square mx-2"></i>Cadastrar nova editora</a>
     </div>
+
+    @if(TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success text-light" role="alert"> 
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger text-light" role="alert">
+            @TempData["MensagemErro"]
+        </div>
+    }
+
     <div class="table-responsive">
-    <table class="table table-sm table-hover">
+    <table id="tabela-editoras" class="table table-sm table-hover">
         <thead>
             <tr>
                 <th scope="col">#</th>
@@ -29,10 +44,10 @@
                         <td>@editora.Id</td>
                         <td>@editora.Nome</td>
                         <td>
-                            <a class="btn btn-warning mx-2" asp-controller="Editora" asp-route-id="@editora.Id" asp-action="Update">Editar</a>
+                                <a class="btn btn-warning mx-2" asp-controller="Editora" asp-route-id="@editora.Id" asp-action="Update"><i class="bi bi-pencil-square mx-2"></i>Editar</a>
                         </td>
                         <td>
-                                <a class="btn btn-danger mx-2" asp-controller="Editora" asp-route-id="@editora.Id" asp-action="Delete">Excluir</a>
+                                <a class="btn btn-danger mx-2" asp-controller="Editora" asp-route-id="@editora.Id" asp-action="Delete"><i class="bi bi-trash3-fill mx-2"></i>Excluir</a>
                         </td>
                     </tr>
                 }

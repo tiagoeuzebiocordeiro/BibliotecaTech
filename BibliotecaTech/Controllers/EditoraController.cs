@@ -31,8 +31,12 @@ namespace BibliotecaTech.Controllers
             {
                 _context.Editoras.Add(editora);
                 _context.SaveChanges();
+                TempData["MensagemSucesso"] = "Cadastro realizado com sucesso!";
                 return RedirectToAction("Index");
             }
+
+            TempData["MensagemErro"] = "Ocorreu um erro ao realizar o cadastro!";
+
             return View();
         }
 
@@ -58,8 +62,14 @@ namespace BibliotecaTech.Controllers
             {
                 _context.Editoras.Update(editora);
                 _context.SaveChanges();
+
+                TempData["MensagemSucesso"] = "Edição realizada com sucesso!";
+
                 return RedirectToAction("Index");
             }
+
+            TempData["MensagemErro"] = "Ocorreu um erro ao realizar a edição!";
+
             return View();
         }
 
@@ -89,6 +99,9 @@ namespace BibliotecaTech.Controllers
             }
             _context.Editoras.Remove(editora);
             _context.SaveChanges();
+
+            TempData["MensagemSucesso"] = "Deleção realizada com sucesso!";
+
             return RedirectToAction("Index");
         }
     }
