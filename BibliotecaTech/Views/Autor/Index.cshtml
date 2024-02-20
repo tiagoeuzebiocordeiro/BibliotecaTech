@@ -1,0 +1,60 @@
+﻿@model IEnumerable<AutorModel>
+
+@{
+    ViewData["title"] = "Lista de autores";
+}
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-5">
+        <h1>Autores</h1>
+        <a class="btn btn-success mx-2" asp-controller="Autor" asp-action="Create"><i class="bi bi-plus-square mx-2"></i>Cadastrar novo autor</a>
+    </div>
+
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success text-light" role="alert">
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger text-light" role="alert">
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+    <div class="table-responsive">
+        <table id="tabela-formatada" class="table table-sm table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome do Autor</th>
+                    <th scope="col">Data de Nascimento</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @if (Model != null)
+                {
+                    @foreach (var autor in Model)
+                    {
+                        <tr>
+                            <td>@autor.Id</td>
+                            <td>@autor.Nome</td>
+                            <td>@Html.DisplayFor(model => autor.DataNascimento)</td>
+                            <td>
+                                <a class="btn btn-warning mx-2" asp-controller="Autor" asp-route-id="@autor.Id" asp-action="Update"><i class="bi bi-pencil-square mx-2"></i>Editar</a>
+                            </td>
+                            <td>
+                                <a class="btn btn-danger mx-2" asp-controller="Autor" asp-route-id="@autor.Id" asp-action="Delete"><i class="bi bi-trash3-fill mx-2"></i>Excluir</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

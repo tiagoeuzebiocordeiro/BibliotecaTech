@@ -1,7 +1,7 @@
 ﻿
 /*Tabela das editoras*/
 $(document).ready(function () {
-    $('#tabela-editoras').DataTable({
+    $('#tabela-formatada').DataTable({
         language: {
             "decimal": "",
             "emptyTable": "Nenhum dado disponível.",
@@ -36,3 +36,4 @@ $(document).ready(function () {
     }, 5000)
 
 });
+
